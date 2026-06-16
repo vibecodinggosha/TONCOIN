@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TON — The Open Network</title>
+<meta name="description" content="TON — The Open Network. Комьюнити-токен на блокчейне TON.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#0098EA;--blue2:#54C5FF;--dark:#0C1116;--gray:#637587;
+    --light-gray:#F4F7FA;--border:#E6ECF2;--white:#fff;--maxw:1160px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,sans-serif;color:var(--dark);background:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ANNOUNCE */
+  .announce{background:var(--blue);padding:11px 0;text-align:center;font-size:14px;font-weight:600;color:#fff}
+  .announce a{display:inline-flex;align-items:center;gap:10px;color:#fff}
+  .announce .code-icon{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.22);color:#fff;font-size:11px;font-weight:800;flex-shrink:0}
+  .announce .arr{opacity:.85;margin-left:2px}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  .nav-inner{display:flex;align-items:center;height:68px}
+  .brand{display:flex;align-items:center}
+  .brand img{width:44px;height:44px;object-fit:contain;border-radius:50%;display:block}
+  .nav-links{display:flex;gap:4px;margin-left:18px}
+  .nav-links a{font-size:15px;font-weight:500;color:var(--gray);padding:7px 12px;border-radius:10px;transition:all .15s}
+  .nav-links a:hover{color:var(--dark);background:var(--light-gray)}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;border:none;cursor:pointer;padding:10px 20px;border-radius:999px;transition:all .15s;white-space:nowrap}
+  .btn-outline{background:transparent;color:var(--dark);border:1.5px solid var(--border)}
+  .btn-outline:hover{border-color:var(--blue);color:var(--blue)}
+  .btn-blue{background:var(--blue);color:#fff}
+  .btn-blue:hover{background:#0089d4;transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,152,234,.35)}
+  .btn-ghost-lg{background:#fff;color:var(--dark);border:1.5px solid var(--border);padding:14px 30px;font-size:16px;font-weight:600;border-radius:999px;transition:all .2s}
+  .btn-ghost-lg:hover{border-color:var(--blue);color:var(--blue);box-shadow:0 4px 14px rgba(0,152,234,.14)}
+  .burger{background:none;border:none;cursor:pointer;display:none;padding:4px;margin-left:auto}
+  .burger span{display:block;width:22px;height:2px;background:var(--dark);margin:5px 0;border-radius:2px}
+
+  /* HERO */
+  .hero{background:#fff;text-align:center;padding:80px 0 68px}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--gray);border:1.5px solid var(--border);padding:6px 14px 6px 10px;border-radius:999px;margin-bottom:34px}
+  .hero-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--blue)}
+  .hero h1{font-size:clamp(40px,7vw,80px);font-weight:800;line-height:1.08;letter-spacing:-2px;color:var(--dark);margin-bottom:4px}
+  .hero h1 .blue{color:var(--blue);display:block}
+  .cursor{display:inline-block;width:4px;height:clamp(32px,5.5vw,64px);background:var(--blue);vertical-align:middle;margin-left:4px;border-radius:2px;animation:blink .9s step-end infinite;transform:translateY(-4px)}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  .hero-sub{font-size:clamp(16px,2vw,20px);color:var(--gray);max-width:520px;margin:24px auto 36px;line-height:1.55}
+  .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+  /* ABOUT TOKEN */
+  .about-token{padding:80px 0 0;background:#fff}
+  .at-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .at-eyebrow{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--blue);margin-bottom:12px}
+  .about-token h2{font-size:clamp(28px,3.5vw,42px);font-weight:800;letter-spacing:-1.2px;line-height:1.1;margin-bottom:18px}
+  .about-token p{font-size:16px;color:var(--gray);line-height:1.65;margin-bottom:14px}
+  .about-token p strong{color:var(--dark)}
+  .at-facts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+  .at-fact{background:var(--light-gray);border:1.5px solid var(--border);border-radius:14px;padding:14px 16px}
+  .af-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#aab3bf;margin-bottom:5px}
+  .af-val{font-size:14px;font-weight:700;color:var(--dark)}
+  .at-mono{font-family:monospace;font-size:12px!important}
+  .at-visual{display:flex;align-items:center;justify-content:center}
+  .at-card-img{background:var(--dark);border-radius:28px;width:100%;aspect-ratio:1;max-width:340px;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.15)}
+  .at-card-img img{width:62%;height:62%;object-fit:contain;border-radius:50%}
+  .at-badge{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:#fff;border-radius:999px;display:flex;align-items:center;gap:8px;padding:8px 16px;box-shadow:0 4px 16px rgba(0,0,0,.15);white-space:nowrap}
+  .at-badge img{width:22px;height:22px;border-radius:50%}
+  .at-badge span{font-size:13px;font-weight:700;color:var(--dark)}
+
+  /* PRICE CARD */
+  .price-section{background:#fff;padding:0 0 72px}
+  .price-section .head{text-align:center;padding:48px 0 32px;font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1.2px;line-height:1.1}
+  .price-section .head span{color:var(--blue)}
+  .price-card{max-width:680px;margin:0 auto;background:#fff;border:1.5px solid var(--border);border-radius:24px;padding:28px 28px 20px;box-shadow:0 4px 32px rgba(13,40,70,.07)}
+  .pc-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .pc-token{display:flex;align-items:center;gap:10px}
+  .pc-token img{width:44px;height:44px;border-radius:50%}
+  .pc-token .tname{font-size:15px;color:var(--gray);font-weight:500}
+  .pc-price{font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:-1px;margin-top:3px}
+  .pc-chart{flex:1;min-width:100px;max-width:180px}
+  .pc-change{font-size:13px;font-weight:700;color:#16A34A;text-align:right;margin-top:4px}
+  .pc-change.down{color:#DC2626}
+  .pc-divider{border:none;border-top:1.5px solid var(--border);margin:20px 0}
+  .pc-stats{display:grid;grid-template-columns:repeat(3,1fr)}
+  .pc-stat{padding:4px 16px;text-align:center;position:relative}
+  .pc-stat:not(:last-child)::after{content:'';position:absolute;right:0;top:10%;height:80%;width:1px;background:var(--border)}
+  .pc-stat .slabel{font-size:12px;color:var(--gray);font-weight:500;margin-bottom:5px;display:flex;align-items:center;gap:4px;justify-content:center}
+  .pc-stat .sval{font-size:19px;font-weight:800;letter-spacing:-.5px}
+  .pc-footer{text-align:center;font-size:12px;color:#aab3bf;margin-top:16px}
+  .pc-footer a{color:var(--blue);font-weight:600}
+
+  /* CONTRACT */
+  .ca-section{padding:0 0 80px;text-align:center;background:#fff}
+  .ca-box{display:inline-flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;background:var(--light-gray);border:1.5px solid var(--border);padding:10px 10px 10px 20px;border-radius:22px;max-width:calc(100% - 48px)}
+  .ca-box .lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--gray);flex-shrink:0}
+  .ca-box code{font-family:'Inter',monospace;font-size:13px;color:var(--dark);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0;max-width:260px}
+  .copy-btn{background:var(--blue);color:#fff;font-weight:700;font-size:13px;padding:9px 18px;border-radius:14px;border:none;cursor:pointer;flex-shrink:0;transition:all .15s}
+  .copy-btn:hover{background:#0089d4;transform:translateY(-1px)}
+  .copy-btn.ok{background:#16B364}
+
+  /* WALLET */
+  .wallet-section{padding:72px 0 80px;background:#fff}
+  .wallet-section .head{font-size:clamp(26px,4vw,42px);font-weight:800;letter-spacing:-1.2px;text-align:center;margin-bottom:8px;color:var(--dark)}
+  .wallet-section .sub{text-align:center;font-size:16px;color:var(--blue);font-weight:600}
+  .wallet-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+  .wcard{background:var(--dark);color:#fff;border-radius:22px;padding:28px 26px 26px;transition:transform .2s,box-shadow .2s;cursor:pointer;display:block}
+  .wcard:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.18)}
+  .wcard .wc-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .wcard .wc-head img{width:36px;height:36px;border-radius:10px;object-fit:contain}
+  .wcard .wc-name{font-size:18px;font-weight:800}
+  .wcard .wc-desc{font-size:14px;color:#9DB2C7;line-height:1.55}
+  .wcard .wc-link{display:inline-flex;align-items:center;gap:6px;margin-top:18px;font-size:14px;font-weight:700;color:var(--blue2)}
+
+  /* BUY STEPS */
+  .buy{padding:0 0 80px;background:#fff}
+  .buy-head{text-align:center;margin-bottom:52px}
+  .buy-head h2{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-1.2px}
+  .buy-head p{color:var(--gray);font-size:17px;margin-top:12px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .step{background:var(--light-gray);border:1.5px solid var(--border);border-radius:20px;padding:28px 24px}
+  .step-ico{width:56px;height:56px;border-radius:16px;overflow:hidden;margin-bottom:18px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+  .step-ico img{width:100%;height:100%;object-fit:cover;border-radius:16px}
+  .step h3{font-size:18px;font-weight:800;letter-spacing:-.3px}
+  .step p{font-size:14px;color:var(--gray);margin-top:8px;line-height:1.6}
+  .step a{color:var(--blue);font-weight:600}
+
+  /* COMMUNITY */
+  .community{background:var(--dark);color:#fff;padding:80px 0;text-align:center;border-radius:28px;margin:0 24px 80px}
+  .community h2{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-1.2px}
+  .community p{color:#9DB2C7;font-size:17px;max-width:500px;margin:16px auto 0}
+  .comm-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+  .btn-comm-white{background:#fff;color:var(--dark);padding:14px 26px;border-radius:999px;font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:8px;transition:all .15s}
+  .btn-comm-white:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.25)}
+
+  /* FOOTER */
+  footer{background:#fff;border-top:1.5px solid var(--border);padding:56px 0 36px}
+  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  .foot-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;margin-bottom:14px}
+  .foot-logo img{width:36px;height:36px;border-radius:50%;object-fit:contain}
+  .foot-tagline{font-size:14px;color:var(--gray);max-width:300px;line-height:1.6}
+  .foot-links{display:flex;gap:56px;flex-wrap:wrap}
+  .foot-col h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#aab3bf;margin-bottom:14px}
+  .foot-col a{display:block;font-size:14px;color:var(--gray);margin-bottom:10px;transition:color .15s;font-weight:500}
+  .foot-col a:hover{color:var(--blue)}
+  .foot-bottom{margin-top:40px;padding-top:24px;border-top:1.5px solid var(--border);font-size:12px;color:#aab3bf;line-height:1.6}
+
+  /* REVEAL */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:900px){
+    .nav-links,.nav-right .desk{display:none}
+    .burger{display:block}
+    .steps{grid-template-columns:1fr}
+    .wallet-cards{grid-template-columns:1fr}
+    .pc-stats{grid-template-columns:1fr}
+    .pc-stat:not(:last-child)::after{display:none}
+    .pc-stat{border-bottom:1.5px solid var(--border);padding:12px 0}
+    .foot-links{gap:32px}
+    .foot-top{flex-direction:column}
+    .community{margin:0 12px 60px;border-radius:20px}
+    .at-grid{grid-template-columns:1fr;gap:36px}
+    .at-visual{order:-1}
+    .at-card-img{max-width:260px;margin:0 auto}
+    .at-facts{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:540px){
+    .hero{padding:56px 0 50px}
+    .ca-box code{max-width:160px}
+    .at-facts{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE -->
+<div class="announce">
+  <a href="https://app.ston.fi/swap?tt=EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU" target="_blank" rel="noopener">
+    <span class="code-icon">{...}</span>
+    Купи TON на STON.fi — комьюнити-токен на блокчейне TON
+    <span class="arr">›</span>
+  </a>
+</div>
+
+<!-- NAV -->
+<header>
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <img src="https://resistance.dog/assets/darkdog-avatar.png" alt="Resistance Dog" onerror="this.style.display='none'">
+    </a>
+    <nav class="nav-links">
+      <a href="#about">О токене</a>
+      <a href="#price">Метрики</a>
+      <a href="#wallets">Купить</a>
+      <a href="#community">Сообщество</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-outline desk" href="https://t.me/+rIesQf7q7uNiODU6" target="_blank" rel="noopener">Чат</a>
+      <a class="btn btn-blue" href="https://app.ston.fi/swap?tt=EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU" target="_blank" rel="noopener">Купить TON</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="hero">
+  <div class="wrap">
+    <div class="hero-tag"><span class="dot"></span>The Open Network · Resistance Dog × TON</div>
+    <h1>
+      The Open Network
+      <span class="blue">for everyone<span class="cursor"></span></span>
+    </h1>
+    <p class="hero-sub">Комьюнити-токен с тикером $TON на блокчейне The Open Network. Для тех, кто помнит, с чего всё началось.</p>
+    <div class="hero-btns">
+      <a class="btn-ghost-lg" href="#price">Смотреть метрики</a>
+      <a class="btn-ghost-lg" href="https://app.ston.fi/swap?tt=EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU" target="_blank" rel="noopener">Купить TON</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT TOKEN -->
+<section id="about" class="about-token">
+  <div class="wrap">
+    <div class="at-grid reveal">
+      <div class="at-text">
+        <p class="at-eyebrow">О токене</p>
+        <h2>Токен TON —<br>дань уважения сети</h2>
+        <p>Это <strong>комьюнити-токен</strong> с тикером <strong>$TON</strong>, выпущенный на блокчейне The Open Network. Не путать с нативной монетой — это отдельный мемоин, созданный сообществом в честь экосистемы TON.</p>
+        <div class="at-facts">
+          <div class="at-fact">
+            <div class="af-label">Блокчейн</div>
+            <div class="af-val">TON (The Open Network)</div>
+          </div>
+          <div class="at-fact">
+            <div class="af-label">DEX</div>
+            <div class="af-val">STON.fi · Пара TON/GRAM</div>
+          </div>
+          <div class="at-fact">
+            <div class="af-label">Контракт</div>
+            <div class="af-val at-mono">EQAk9UDY…juIU</div>
+          </div>
+          <div class="at-fact">
+            <div class="af-label">Чат</div>
+            <div class="af-val"><a href="https://t.me/+rIesQf7q7uNiODU6" target="_blank" rel="noopener" style="color:var(--blue)">Telegram</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="at-visual">
+        <div class="at-card-img">
+          <img src="https://resistance.dog/assets/darkdog-avatar.png" alt="Resistance Dog" onerror="this.style.display='none'">
+          <div class="at-badge">
+            <img src="https://cryptologos.cc/logos/toncoin-ton-logo.png" alt="TON" onerror="this.style.display='none'">
+            <span>on TON Blockchain</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE CARD -->
+<section id="price" class="price-section">
+  <div class="wrap">
+    <div class="head reveal">Токен TON —<br><span>живые метрики</span></div>
+    <div class="price-card reveal">
+      <div class="pc-top">
+        <div>
+          <div class="pc-token">
+            <img src="https://cryptologos.cc/logos/toncoin-ton-logo.png" alt="TON" onerror="this.style.display='none'">
+            <div>
+              <div class="tname">TON · комьюнити-токен</div>
+              <div class="pc-price" id="pcPrice">—</div>
+            </div>
+          </div>
+        </div>
+        <div class="pc-chart">
+          <svg id="sparkline" width="100%" height="52" viewBox="0 0 180 52" preserveAspectRatio="none">
+            <polyline id="sparkLine" points="" fill="none" stroke="#0098EA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="pc-change" id="pcChange">—</div>
+        </div>
+      </div>
+      <hr class="pc-divider">
+      <div class="pc-stats">
+        <div class="pc-stat">
+          <div class="slabel"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#637587" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>Капитализация</div>
+          <div class="sval" id="pcMcap">—</div>
+        </div>
+        <div class="pc-stat">
+          <div class="slabel"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#637587" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v6M12 22v-6M4.93 4.93l4.24 4.24M19.07 4.93l-4.24 4.24M2 12h6M22 12h-6M4.93 19.07l4.24-4.24M19.07 19.07l-4.24-4.24"/></svg>Ликвидность</div>
+          <div class="sval" id="pcLiq">—</div>
+        </div>
+        <div class="pc-stat">
+          <div class="slabel"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#637587" stroke-width="2.2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Объём 24ч</div>
+          <div class="sval" id="pcVol">—</div>
+        </div>
+      </div>
+      <div class="pc-footer">Данные: <a href="https://dexscreener.com/ton/EQA77ToIudyXmvAcjG3J1KWp6Q5h_nhAxcS0qbpFDBSXM4n2" target="_blank" rel="noopener">DexScreener</a> · обновляется каждые 30 сек</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTRACT -->
+<div class="ca-section">
+  <div class="wrap reveal">
+    <div class="ca-box">
+      <span class="lbl">Контракт</span>
+      <code>EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU</code>
+      <button class="copy-btn" id="copyBtn" data-ca="EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU">Копировать</button>
+    </div>
+  </div>
+</div>
+
+<!-- WHERE TO BUY -->
+<section id="wallets" class="wallet-section">
+  <div class="wrap">
+    <div class="head reveal">Где купить TON</div>
+    <p class="sub reveal">
+      <a href="https://app.ston.fi" target="_blank" rel="noopener">Смотреть все биржи ›</a>
+    </p>
+    <div class="wallet-cards reveal">
+      <a class="wcard" href="https://app.ston.fi/swap?tt=EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU" target="_blank" rel="noopener">
+        <div class="wc-head">
+          <img src="https://s2.coinmarketcap.com/static/cloud/img/dex/16.0.0/stonfi.png" alt="STON.fi" onerror="this.src='https://cryptologos.cc/logos/toncoin-ton-logo.png'">
+          <div class="wc-name">STON.fi</div>
+        </div>
+        <div class="wc-desc">Основная DEX на блокчейне TON. Сделай свап TON/GRAM прямо сейчас без регистрации.</div>
+        <span class="wc-link">Купить TON ›</span>
+      </a>
+      <a class="wcard" href="https://t.me/+rIesQf7q7uNiODU6" target="_blank" rel="noopener">
+        <div class="wc-head">
+          <img src="https://resistance.dog/assets/darkdog-avatar.png" alt="Community" onerror="this.style.display='none'">
+          <div class="wc-name">Сообщество TON</div>
+        </div>
+        <div class="wc-desc">Живой чат держателей. Задавай вопросы, получай помощь со свапом и следи за новостями.</div>
+        <span class="wc-link">Войти в чат ›</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BUY STEPS -->
+<section class="buy">
+  <div class="wrap">
+    <div class="buy-head reveal">
+      <h2>Как купить за 3 шага</h2>
+      <p>Если есть Telegram — ты почти у цели.</p>
+    </div>
+    <div class="steps">
+
+      <div class="step reveal">
+        <!-- Tonkeeper icon -->
+        <div class="step-ico">
+          <img src="https://tonkeeper.com/assets/tonkeeper-icon.png"
+               onerror="this.src='https://img.icons8.com/fluency/96/wallet.png'"
+               alt="Кошелёк">
+        </div>
+        <h3>Кошелёк</h3>
+        <p>Открой <a href="https://wallet.tg" target="_blank" rel="noopener">Wallet в Telegram</a> или установи <a href="https://tonkeeper.com" target="_blank" rel="noopener">Tonkeeper</a>. Займёт минуту.</p>
+      </div>
+
+      <div class="step reveal">
+        <!-- TON coin icon -->
+        <div class="step-ico">
+          <img src="https://cryptologos.cc/logos/toncoin-ton-logo.png"
+               onerror="this.src='https://img.icons8.com/fluency/96/coins.png'"
+               alt="Пополни">
+        </div>
+        <h3>Пополни</h3>
+        <p>Купи монет TON прямо в кошельке или переведи с биржи — нужно совсем немного на свап и комиссию.</p>
+      </div>
+
+      <div class="step reveal">
+        <!-- STON.fi icon -->
+        <div class="step-ico">
+          <img src="https://img.icons8.com/fluency/96/exchange.png"
+               alt="Свапни">
+        </div>
+        <h3>Свапни</h3>
+        <p>Зайди на <a href="https://app.ston.fi/swap?tt=EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU" target="_blank" rel="noopener">STON.fi</a>, вставь адрес контракта — и TON у тебя в кошельке.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<div class="wrap" id="community">
+  <div class="community reveal">
+    <img src="https://resistance.dog/assets/darkdog-avatar.png" alt="Resistance Dog"
+         style="width:64px;height:64px;border-radius:50%;margin:0 auto 20px;display:block;"
+         onerror="this.style.display='none'">
+    <h2>Сеть — это люди</h2>
+    <p>Заходи в открытый чат держателей и будь частью движения с самого начала.</p>
+    <div class="comm-btns">
+      <a class="btn-comm-white" href="https://t.me/+rIesQf7q7uNiODU6" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8A8.5 8.5 0 0 1 3 14l-2 7 5.7-1.9a8.38 8.38 0 0 0 3.8.9h.5a8.5 8.5 0 0 0 8-8.5v-.5z"/></svg>
+        Войти в чат
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">
+          <img src="https://resistance.dog/assets/darkdog-avatar.png" alt="Dog" onerror="this.style.display='none'">
+        </div>
+        <p class="foot-tagline">Комьюнити-токен в духе The Open Network. Открытая сеть, живое сообщество.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4>Токен</h4>
+          <a href="#about">О токене</a>
+          <a href="#price">Метрики</a>
+          <a href="#wallets">Купить</a>
+        </div>
+        <div class="foot-col">
+          <h4>Сообщество</h4>
+          <a href="https://t.me/+rIesQf7q7uNiODU6" target="_blank" rel="noopener">Чат Telegram</a>
+        </div>
+        <div class="foot-col">
+          <h4>Биржи</h4>
+          <a href="https://app.ston.fi/swap?tt=EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU" target="_blank" rel="noopener">STON.fi</a>
+          <a href="https://dexscreener.com/ton/EQA77ToIudyXmvAcjG3J1KWp6Q5h_nhAxcS0qbpFDBSXM4n2" target="_blank" rel="noopener">DexScreener</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      Контракт: <code style="font-size:11px">EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU</code><br>
+      © 2026 TON Community. Независимый комьюнити-токен. Не является официальным проектом TON Foundation или Telegram. Криптовалюты волатильны — DYOR.
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var API="https://api.dexscreener.com/latest/dex/tokens/EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU";
+  var fb={priceUsd:"0.000007356",marketCap:7356,liquidity:{usd:3817},volume:{h24:16608},priceChange:{h24:-40.76}};
+  var hp=[];
+  function fmt(n){n=Number(n);if(!isFinite(n))return"—";var a=Math.abs(n);if(a>=1e9)return"$"+(n/1e9).toFixed(2)+"B";if(a>=1e6)return"$"+(n/1e6).toFixed(2)+"M";if(a>=1e3)return"$"+(n/1e3).toFixed(2)+"K";return"$"+n.toFixed(2)}
+  function fp(p){p=Number(p);if(!isFinite(p)||p<=0)return"—";if(p>=1)return"$"+p.toLocaleString("en-US",{maximumFractionDigits:4});if(p>=0.001)return"$"+p.toFixed(6);var s=p.toExponential(),m=s.match(/^(\d(?:\.\d+)?)e-(\d+)$/);if(!m)return"$"+p.toFixed(9);return"$0.0<sub>"+(parseInt(m[2],10)-1)+"</sub>"+m[1].replace(".","").slice(0,4)}
+  function spark(prices){var el=document.getElementById("sparkLine");if(!el||prices.length<2)return;var mn=Math.min.apply(null,prices),mx=Math.max.apply(null,prices),range=mx-mn||1,W=180,H=46,pad=3;var pts=prices.map(function(v,i){return(i*(W/(prices.length-1))).toFixed(1)+","+(H-pad-(v-mn)/range*(H-pad*2)).toFixed(1)});el.setAttribute("points",pts.join(" "));el.setAttribute("stroke",prices[prices.length-1]>=prices[0]?"#16A34A":"#DC2626")}
+  function render(d){
+    document.getElementById("pcPrice").innerHTML=fp(d.priceUsd);
+    document.getElementById("pcMcap").textContent=fmt(d.marketCap||d.fdv);
+    document.getElementById("pcLiq").textContent=fmt(d.liquidity&&d.liquidity.usd);
+    document.getElementById("pcVol").textContent=fmt(d.volume&&d.volume.h24);
+    var c=Number(d.priceChange&&d.priceChange.h24),ce=document.getElementById("pcChange");
+    if(isFinite(c)){ce.textContent=(c>=0?"+":"")+c.toFixed(2)+"% last 24h";ce.className="pc-change"+(c>=0?"":" down")}
+    var p=Number(d.priceUsd);
+    if(p>0){var c1=Number(d.priceChange&&d.priceChange.h1)||0,c6=Number(d.priceChange&&d.priceChange.h6)||0,c24=Number(d.priceChange&&d.priceChange.h24)||0,p24=p/(1+c24/100),p6=p/(1+c6/100),p1=p/(1+c1/100);hp=[p24,p24*(1+c24*.35/100),p6,p6*(1+c6*.5/100),p1,p1*(1+c1*.3/100),p]}
+    spark(hp);
+  }
+  function load(){fetch(API,{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){var ps=d&&d.pairs;if(ps&&ps.length){ps.sort(function(a,b){return((b.liquidity&&b.liquidity.usd)||0)-((a.liquidity&&a.liquidity.usd)||0)});render(ps[0])}else render(fb)}).catch(function(){render(fb)})}
+  load();setInterval(load,30000);
+  var cb=document.getElementById("copyBtn");
+  if(cb)cb.addEventListener("click",function(){var ca=cb.getAttribute("data-ca"),done=function(){cb.textContent="Скопировано ✓";cb.classList.add("ok");setTimeout(function(){cb.textContent="Копировать";cb.classList.remove("ok")},1600)};navigator.clipboard?navigator.clipboard.writeText(ca).then(done).catch(done):(function(){var t=document.createElement("textarea");t.value=ca;document.body.appendChild(t);t.select();try{document.execCommand("copy")}catch(e){}document.body.removeChild(t);done()})()});
+  var io=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll(".reveal").forEach(function(el){io.observe(el)});
+  var bg=document.getElementById("burger");
+  if(bg)bg.addEventListener("click",function(){var nl=document.querySelector(".nav-links");if(!nl)return;var o=nl.getAttribute("data-open");if(o){nl.removeAttribute("data-open");nl.style.cssText=""}else{nl.setAttribute("data-open","1");nl.style.cssText="display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:#fff;border-bottom:1.5px solid #E6ECF2;padding:12px 24px;gap:2px;z-index:100"}});
+})();
+</script>
+</body>
+</html>
