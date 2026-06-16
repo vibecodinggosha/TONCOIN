@@ -3,36 +3,23 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TON — The Open Nostalgia</title>
-<meta name="description" content="TON — токен на блокчейне TON. Контракт, графики, сообщество." />
+<title>TON — The Open Network</title>
+<meta name="description" content="TON — токен сообщества на блокчейне The Open Network. Быстрый, открытый, для всех." />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><circle cx=%2212%22 cy=%2212%22 r=%2211%22 fill=%22%230098EA%22/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-<div class="bg-blobs">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-</div>
 
 <header class="site-header">
   <div class="container header-inner">
     <a href="#top" class="brand">
       <span class="brand-mark">
-        <svg viewBox="0 0 40 40" width="32" height="32" fill="none">
-          <circle cx="20" cy="20" r="20" fill="url(#g)"/>
-          <path d="M12 14h16l-8 16-8-16Z" fill="#fff" fill-opacity="0.95"/>
-          <path d="M12 14h16l-3.2 6.4H15.2L12 14Z" fill="#0b1530" fill-opacity="0.18"/>
-          <defs>
-            <linearGradient id="g" x1="0" y1="0" x2="40" y2="40">
-              <stop offset="0" stop-color="#37AEF4"/>
-              <stop offset="1" stop-color="#0461E3"/>
-            </linearGradient>
-          </defs>
+        <svg viewBox="0 0 56 56" width="36" height="36" fill="none">
+          <circle cx="28" cy="28" r="28" fill="#0098EA"/>
+          <path d="M37.6 17.2H18.4c-3.53 0-5.77 3.8-4 6.87l11.6 20.12c.77 1.34 2.7 1.34 3.48 0l11.6-20.12c1.78-3.07-.46-6.87-3.98-6.87Zm-11.74 20.9-2.53-4.9-6.1-10.9c-.4-.72.1-1.65.97-1.65h7.66v17.45ZM38.7 22.4l-6.1 10.9-2.52 4.9V20.65h7.66c.86 0 1.37.93.96 1.65Z" fill="#fff"/>
         </svg>
       </span>
       <span class="brand-name">TON</span>
@@ -40,15 +27,16 @@
 
     <nav class="main-nav" id="mainNav">
       <a href="#about">О токене</a>
-      <a href="#chart">График</a>
-      <a href="#tokenomics">Контракт</a>
+      <a href="#chart">Рынок</a>
+      <a href="#buy">Купить</a>
+      <a href="#contract">Контракт</a>
       <a href="#community">Сообщество</a>
     </nav>
 
     <div class="header-actions">
-      <a class="btn btn-ghost" href="https://t.me/tonkorova" target="_blank" rel="noopener">Канал</a>
+      <a class="btn btn-light" href="https://t.me/tonkorova" target="_blank" rel="noopener">Telegram</a>
       <a class="btn btn-primary" href="#buy">Купить TON</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Открыть меню">
+      <button class="nav-toggle" id="navToggle" aria-label="Меню">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -60,57 +48,62 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container hero-inner">
-      <div class="badge fade-in">
-        <span class="dot"></span> Live on The Open Network
-      </div>
-      <h1 class="hero-title fade-in">
-        Возвращение<br/>
-        <span class="text-gradient">духа TON</span>
-      </h1>
-      <p class="hero-subtitle fade-in">
-        TON — токен сообщества, выросший из ностальгии по первым дням The Open Network.
-        Простой, быстрый, честный. Полностью на блокчейне TON.
-      </p>
-
-      <div class="hero-cta fade-in">
-        <a class="btn btn-primary btn-lg" id="buyBtnHero" href="#buy">Купить TON</a>
-        <a class="btn btn-outline btn-lg" href="https://t.me/+rIesQf7q7uNiODU6" target="_blank" rel="noopener">Войти в чат</a>
+      <div class="hero-copy">
+        <h1 class="hero-title">
+          Крипта<br/>для всех
+        </h1>
+        <p class="hero-subtitle">
+          TON — токен сообщества на блокчейне The Open Network. Быстрый,
+          открытый и децентрализованный — таким, каким и был задуман TON с самого начала.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="#buy">Купить TON</a>
+          <a class="btn btn-outline btn-lg" href="#about">Узнать больше</a>
+        </div>
       </div>
 
-      <div class="contract-pill fade-in">
-        <span class="contract-label">Контракт</span>
-        <code id="contractAddr">EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU</code>
-        <button class="copy-btn" id="copyContract" title="Скопировать адрес">Копировать</button>
-      </div>
-    </div>
-
-    <div class="hero-art" aria-hidden="true">
-      <div class="orbit-ring ring-1"></div>
-      <div class="orbit-ring ring-2"></div>
-      <div class="orbit-ring ring-3"></div>
-      <div class="gem">
-        <svg viewBox="0 0 200 200" width="160" height="160">
-          <polygon points="100,10 190,70 100,190 10,70" fill="url(#gemGrad)"/>
-          <polygon points="100,10 190,70 100,80 10,70" fill="#ffffff" fill-opacity="0.35"/>
-          <polygon points="10,70 100,80 100,190" fill="#ffffff" fill-opacity="0.1"/>
-          <defs>
-            <linearGradient id="gemGrad" x1="0" y1="0" x2="200" y2="200">
-              <stop offset="0" stop-color="#37AEF4"/>
-              <stop offset="1" stop-color="#0461E3"/>
-            </linearGradient>
-          </defs>
-        </svg>
+      <div class="hero-art" aria-hidden="true">
+        <div class="diamond">
+          <svg viewBox="0 0 280 280" width="280" height="280">
+            <defs>
+              <linearGradient id="d1" x1="0" y1="0" x2="280" y2="280">
+                <stop offset="0" stop-color="#5BC2FF"/>
+                <stop offset="1" stop-color="#0098EA"/>
+              </linearGradient>
+              <linearGradient id="d2" x1="0" y1="0" x2="0" y2="280">
+                <stop offset="0" stop-color="#A9E0FF"/>
+                <stop offset="1" stop-color="#37AEF4"/>
+              </linearGradient>
+            </defs>
+            <polygon points="140,20 250,100 140,260 30,100" fill="url(#d1)"/>
+            <polygon points="140,20 250,100 140,110 30,100" fill="url(#d2)"/>
+            <polygon points="30,100 140,110 140,260" fill="#0088CC" fill-opacity="0.25"/>
+            <polygon points="140,110 250,100 140,260" fill="#fff" fill-opacity="0.12"/>
+          </svg>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- TICKER STRIP -->
-  <section class="ticker-strip" aria-hidden="true">
-    <div class="ticker-track">
-      <span>FAST</span><span>•</span><span>SCALABLE</span><span>•</span><span>DECENTRALIZED</span><span>•</span>
-      <span>COMMUNITY-OWNED</span><span>•</span><span>ON TON</span><span>•</span>
-      <span>FAST</span><span>•</span><span>SCALABLE</span><span>•</span><span>DECENTRALIZED</span><span>•</span>
-      <span>COMMUNITY-OWNED</span><span>•</span><span>ON TON</span><span>•</span>
+  <!-- STATS -->
+  <section class="stats">
+    <div class="container stats-grid">
+      <div class="stat">
+        <div class="stat-num">~5 сек</div>
+        <div class="stat-label">подтверждение транзакции</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$0.00X</div>
+        <div class="stat-label">комиссия сети TON</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">on-chain и проверяемо</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">сообщество держателей</div>
+      </div>
     </div>
   </section>
 
@@ -118,48 +111,46 @@
   <section class="section" id="about">
     <div class="container">
       <div class="section-head">
-        <span class="kicker">О ПРОЕКТЕ</span>
-        <h2>Старая школа TON, новая энергия</h2>
+        <h2>Что такое TON</h2>
         <p class="section-sub">
-          Когда The Open Network только зарождался, всё держалось на сообществе — без лишнего шума,
-          без обещаний «луны». TON возвращает этот вайб: простой токен, прозрачный контракт,
-          живое community-первое сообщество в Telegram.
+          TON — это токен, построенный поверх The Open Network. Никаких сложностей и
+          обещаний «луны» — только открытый контракт, живое сообщество и тот самый
+          ностальгический дух раннего TON.
         </p>
       </div>
 
       <div class="feature-grid">
-        <div class="feature-card">
+        <article class="feature-card">
           <div class="feature-icon">⚡</div>
-          <h3>Скорость TON</h3>
-          <p>Транзакции на блокчейне TON подтверждаются за секунды — никаких долгих ожиданий, никакого газа на ветер.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🔗</div>
-          <h3>On-chain прозрачность</h3>
-          <p>Контракт токена и ликвидность проверяемы прямо в эксплорере TON. Всё открыто и публично.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🐮</div>
-          <h3>Сообщество, а не команда</h3>
-          <p>TON живёт за счёт держателей. Канал и чат — открытое пространство, а не закрытый клуб инсайдеров.</p>
-        </div>
-        <div class="feature-card">
+          <h3>Молниеносно</h3>
+          <p>Транзакции в сети TON подтверждаются за секунды. Отправляй и получай TON без долгих ожиданий.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🔓</div>
+          <h3>Открыто</h3>
+          <p>Контракт и ликвидность публичны. Любой может проверить токен в эксплорере TON — всё прозрачно.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3>Децентрализовано</h3>
+          <p>TON принадлежит держателям, а не закрытой команде. Решения и движение — за сообществом.</p>
+        </article>
+        <article class="feature-card">
           <div class="feature-icon">💎</div>
-          <h3>Ностальгия как ценность</h3>
-          <p>Дизайн, тон общения и сама идея отсылают к ранним временам TON — когда всё только начиналось.</p>
-        </div>
+          <h3>Ностальгия</h3>
+          <p>Дизайн и сам дух проекта отсылают к первым дням The Open Network, когда всё только начиналось.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- LIVE CHART -->
+  <!-- CHART -->
   <section class="section section-alt" id="chart">
     <div class="container">
       <div class="section-head">
-        <span class="kicker">LIVE РЫНОК</span>
-        <h2>График и метрики в реальном времени</h2>
+        <h2>Рынок в реальном времени</h2>
         <p class="section-sub">
-          Данные подгружаются напрямую с DexScreener — цена, объём, маркет-кап и графики обновляются автоматически.
+          Цена, объём, маркет-кап и график обновляются автоматически — данные напрямую с DexScreener.
         </p>
       </div>
 
@@ -167,7 +158,7 @@
         <iframe
           id="dexscreener-embed"
           title="DexScreener TON Chart"
-          src="https://dexscreener.com/ton/EQA77ToIudyXmvAcjG3J1KWp6Q5h_nhAxcS0qbpFDBSXM4n2?embed=1&theme=dark&trades=0&info=0"
+          src="https://dexscreener.com/ton/EQA77ToIudyXmvAcjG3J1KWp6Q5h_nhAxcS0qbpFDBSXM4n2?embed=1&theme=light&trades=0&info=0"
           loading="lazy">
         </iframe>
       </div>
@@ -180,15 +171,45 @@
     </div>
   </section>
 
-  <!-- TOKENOMICS / CONTRACT -->
-  <section class="section" id="tokenomics">
+  <!-- BUY -->
+  <section class="section" id="buy">
     <div class="container">
       <div class="section-head">
-        <span class="kicker">КОНТРАКТ</span>
-        <h2>Проверяй сам</h2>
-        <p class="section-sub">
-          Не верь на слово — сверь адрес контракта и проверь токен в эксплорере TON перед покупкой.
-        </p>
+        <h2>Как купить TON</h2>
+        <p class="section-sub">Три простых шага — и ты в сообществе.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3>Заведи кошелёк TON</h3>
+          <p>Установи Tonkeeper, Tonhub или любой кошелёк сети TON и пополни его TON-коинами.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3>Открой DEX</h3>
+          <p>Зайди на STON.fi или DeDust, подключи кошелёк и вставь адрес контракта токена.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3>Сверь и свопни</h3>
+          <p>Обязательно сверь адрес контракта перед обменом — и добро пожаловать в TON.</p>
+        </div>
+      </div>
+
+      <div class="dex-links">
+        <a class="btn btn-primary btn-lg" href="https://app.ston.fi/swap?ft=TON&tt=EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU" target="_blank" rel="noopener">Swap на STON.fi</a>
+        <a class="btn btn-outline btn-lg" href="https://dedust.io/swap/TON/EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU" target="_blank" rel="noopener">Swap на DeDust</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTRACT -->
+  <section class="section section-alt" id="contract">
+    <div class="container">
+      <div class="section-head">
+        <h2>Контракт токена</h2>
+        <p class="section-sub">Не верь на слово — проверь адрес сам перед покупкой.</p>
       </div>
 
       <div class="contract-card">
@@ -202,48 +223,15 @@
         </div>
         <div class="contract-card-row contract-card-row-address">
           <span class="contract-card-label">Адрес контракта</span>
-          <span class="contract-card-value contract-card-address">
-            <code>EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU</code>
-            <button class="copy-btn" id="copyContract2">Копировать</button>
+          <span class="contract-card-address">
+            <code id="contractAddr">EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU</code>
+            <button class="copy-btn" id="copyContract">Копировать</button>
           </span>
         </div>
         <div class="contract-card-links">
-          <a href="https://tonviewer.com/EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU" target="_blank" rel="noopener" class="btn btn-ghost">Tonviewer ↗</a>
-          <a href="https://dexscreener.com/ton/EQA77ToIudyXmvAcjG3J1KWp6Q5h_nhAxcS0qbpFDBSXM4n2" target="_blank" rel="noopener" class="btn btn-ghost">DexScreener ↗</a>
+          <a href="https://tonviewer.com/EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU" target="_blank" rel="noopener" class="btn btn-light">Tonviewer ↗</a>
+          <a href="https://dexscreener.com/ton/EQA77ToIudyXmvAcjG3J1KWp6Q5h_nhAxcS0qbpFDBSXM4n2" target="_blank" rel="noopener" class="btn btn-light">DexScreener ↗</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BUY -->
-  <section class="section section-alt" id="buy">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">КАК КУПИТЬ</span>
-        <h2>Три шага до TON</h2>
-      </div>
-
-      <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-num">1</div>
-          <h3>Кошелёк TON</h3>
-          <p>Установи Tonkeeper, Tonhub или любой кошелёк, поддерживающий сеть TON, и пополни его TON-коинами.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">2</div>
-          <h3>Открой DEX</h3>
-          <p>Перейди на STON.fi или DeDust, подключи кошелёк и найди токен по адресу контракта ниже.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-num">3</div>
-          <h3>Сверь и свопни</h3>
-          <p>Обязательно сверь адрес контракта перед свопом — и добро пожаловать в TON.</p>
-        </div>
-      </div>
-
-      <div class="dex-links">
-        <a class="btn btn-primary btn-lg" href="https://app.ston.fi/swap?chartVisible=false&ft=TON&tt=EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU" target="_blank" rel="noopener">Swap на STON.fi</a>
-        <a class="btn btn-outline btn-lg" href="https://dedust.io/swap/TON/EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU" target="_blank" rel="noopener">Swap на DeDust</a>
       </div>
     </div>
   </section>
@@ -252,20 +240,11 @@
   <section class="section" id="community">
     <div class="container">
       <div class="community-card">
-        <div class="community-text">
-          <span class="kicker">СООБЩЕСТВО</span>
-          <h2>Заходи, тут свои</h2>
-          <p class="section-sub">
-            Новости, мемы и живое общение держателей TON — в нашем Telegram-канале и чате.
-          </p>
-        </div>
+        <h2>Присоединяйся к сообществу</h2>
+        <p>Новости, мемы и живое общение держателей TON — в нашем Telegram-канале и чате.</p>
         <div class="community-actions">
-          <a class="btn btn-primary btn-lg" href="https://t.me/tonkorova" target="_blank" rel="noopener">
-            Канал @tonkorova
-          </a>
-          <a class="btn btn-outline btn-lg" href="https://t.me/+rIesQf7q7uNiODU6" target="_blank" rel="noopener">
-            Войти в чат
-          </a>
+          <a class="btn btn-white btn-lg" href="https://t.me/tonkorova" target="_blank" rel="noopener">Канал @tonkorova</a>
+          <a class="btn btn-glass btn-lg" href="https://t.me/+rIesQf7q7uNiODU6" target="_blank" rel="noopener">Войти в чат</a>
         </div>
       </div>
     </div>
@@ -275,24 +254,28 @@
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div class="footer-brand">
-      <span class="brand-mark small">
-        <svg viewBox="0 0 40 40" width="24" height="24" fill="none">
-          <circle cx="20" cy="20" r="20" fill="#0461E3"/>
-          <path d="M12 14h16l-8 16-8-16Z" fill="#fff" fill-opacity="0.95"/>
-        </svg>
-      </span>
-      <span>TON</span>
+    <div class="footer-top">
+      <a href="#top" class="brand">
+        <span class="brand-mark">
+          <svg viewBox="0 0 56 56" width="30" height="30" fill="none">
+            <circle cx="28" cy="28" r="28" fill="#0098EA"/>
+            <path d="M37.6 17.2H18.4c-3.53 0-5.77 3.8-4 6.87l11.6 20.12c.77 1.34 2.7 1.34 3.48 0l11.6-20.12c1.78-3.07-.46-6.87-3.98-6.87Zm-11.74 20.9-2.53-4.9-6.1-10.9c-.4-.72.1-1.65.97-1.65h7.66v17.45ZM38.7 22.4l-6.1 10.9-2.52 4.9V20.65h7.66c.86 0 1.37.93.96 1.65Z" fill="#fff"/>
+          </svg>
+        </span>
+        <span class="brand-name">TON</span>
+      </a>
+      <div class="footer-links">
+        <a href="https://t.me/tonkorova" target="_blank" rel="noopener">Telegram-канал</a>
+        <a href="https://t.me/+rIesQf7q7uNiODU6" target="_blank" rel="noopener">Telegram-чат</a>
+        <a href="https://dexscreener.com/ton/EQA77ToIudyXmvAcjG3J1KWp6Q5h_nhAxcS0qbpFDBSXM4n2" target="_blank" rel="noopener">DexScreener</a>
+        <a href="https://tonviewer.com/EQAk9UDY-QjyouPmRxrDNPgfRdV2gRwuffP-l3tQbMF5juIU" target="_blank" rel="noopener">Tonviewer</a>
+      </div>
     </div>
     <p class="footer-disclaimer">
-      TON — токен сообщества на блокчейне The Open Network. Не является инвестиционной рекомендацией.
-      Криптоактивы волатильны — всегда проводи собственное исследование (DYOR) и проверяй адрес контракта перед покупкой.
+      TON — токен сообщества на блокчейне The Open Network. Материалы сайта не являются
+      инвестиционной рекомендацией. Криптоактивы волатильны — всегда проводи собственное
+      исследование (DYOR) и проверяй адрес контракта перед покупкой.
     </p>
-    <div class="footer-links">
-      <a href="https://t.me/tonkorova" target="_blank" rel="noopener">Telegram-канал</a>
-      <a href="https://t.me/+rIesQf7q7uNiODU6" target="_blank" rel="noopener">Telegram-чат</a>
-      <a href="https://dexscreener.com/ton/EQA77ToIudyXmvAcjG3J1KWp6Q5h_nhAxcS0qbpFDBSXM4n2" target="_blank" rel="noopener">DexScreener</a>
-    </div>
     <p class="footer-copy">© 2026 TON Community.</p>
   </div>
 </footer>
